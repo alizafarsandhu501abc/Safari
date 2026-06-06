@@ -29,7 +29,7 @@ git push origin main
 1. Click **+ New** → **GitHub Repo** → select your repository.
 2. Go to the service **Settings** tab:
    - **Service Name**: `safari-backend`
-   - **Root Directory**: `complete_backend`
+   - **Root Directory**: `complete_backend/backend`
 3. Go to the **Variables** tab and add these environment variables:
 
    | Variable | Value |
@@ -42,7 +42,7 @@ git push origin main
    | `PYTHON_PATH` | `python3` |
    | `MAPREDUCE_WORKERS` | `4` |
 
-4. Railway will automatically detect the `nixpacks.toml` at `complete_backend/nixpacks.toml`, install **Node.js** and **Python 3**, and deploy.
+4. Railway will automatically detect the `nixpacks.toml`, install **Node.js** and **Python 3**, and deploy.
 5. Once deployed, go to **Settings** → **Networking** → click **Generate Domain** to get your backend URL (e.g. `https://safari-backend-production-xxxx.up.railway.app`).
 
 ---
@@ -77,10 +77,8 @@ git push origin main
 
 | File | Purpose |
 |---|---|
-| `complete_backend/nixpacks.toml` | Backend build config (Node.js + Python 3) |
+| `complete_backend/backend/nixpacks.toml` | Backend build config (Node.js + Python 3) |
 | `frontend/nixpacks.toml` | Frontend build config (Vite build + preview server) |
-| `complete_backend/.env` | Local-only env vars (not deployed — use Railway Variables tab instead) |
-| `frontend/.env` | Local-only env vars (not deployed — use Railway Variables tab instead) |
 
 ---
 

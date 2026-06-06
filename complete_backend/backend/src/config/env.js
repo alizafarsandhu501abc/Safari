@@ -1,7 +1,8 @@
 const path = require('path');
 const dotenv = require('dotenv');
 
-// Load .env from project root (parent of backend/)
+// Load .env — try backend root first, then parent (complete_backend/) for local dev
+dotenv.config({ path: path.resolve(__dirname, '..', '..', '.env') });
 dotenv.config({ path: path.resolve(__dirname, '..', '..', '..', '.env') });
 
 const requiredVars = ['DATABASE_URL', 'JWT_SECRET'];

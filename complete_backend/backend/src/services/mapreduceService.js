@@ -18,7 +18,7 @@ function runMapReduce(filePath, workers = 4) {
     );
 
     const pythonPath = config.PYTHON_PATH;
-    const scriptPath = path.resolve(__dirname, '..', '..', '..', 'mapreduce', 'main.py');
+    const scriptPath = path.resolve(__dirname, '..', '..', 'mapreduce', 'main.py');
 
     const args = [
       scriptPath,
@@ -28,11 +28,11 @@ function runMapReduce(filePath, workers = 4) {
     ];
 
     const child = spawn(pythonPath, args, {
-      cwd: path.resolve(__dirname, '..', '..', '..'),
+      cwd: path.resolve(__dirname, '..', '..'),
       stdio: ['ignore', 'pipe', 'pipe'],
       env: {
         ...process.env,
-        PYTHONPATH: path.resolve(__dirname, '..', '..', '..'),
+        PYTHONPATH: path.resolve(__dirname, '..', '..'),
       },
     });
 
