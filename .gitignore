@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 package-lock.json
+RAILWAY_DEPLOYMENT.md
 
 # Environment variables
 .env

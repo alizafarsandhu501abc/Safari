@@ -1,0 +1,14 @@
+# Nixpacks configuration for Safari Frontend on Railway
+# Root directory on Railway must be set to: frontend
+
+[phases.setup]
+nixPkgs = ["nodejs_18"]
+
+[phases.install]
+cmds = ["npm ci"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npx vite preview --port ${PORT:-4173} --host"

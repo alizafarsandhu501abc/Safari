@@ -32,7 +32,7 @@ function runMapReduce(filePath, workers = 4) {
       stdio: ['ignore', 'pipe', 'pipe'],
       env: {
         ...process.env,
-        PYTHONPATH: path.resolve(__dirname, '..', '..', '..', '..'),
+        PYTHONPATH: path.resolve(__dirname, '..', '..', '..'),
       },
     });
 

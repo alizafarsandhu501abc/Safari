@@ -15,10 +15,10 @@ from typing import List
 
 import pytest
 
-from complete_backend.mapreduce.engine.splitter import split_file
-from complete_backend.mapreduce.engine.mapper import map_chunk, parallel_map
-from complete_backend.mapreduce.engine.shuffler import shuffle_and_sort
-from complete_backend.mapreduce.engine.reducer import reduce
+from mapreduce.engine.splitter import split_file
+from mapreduce.engine.mapper import map_chunk, parallel_map
+from mapreduce.engine.shuffler import shuffle_and_sort
+from mapreduce.engine.reducer import reduce
 
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,11 @@
+# Nixpacks configuration for Safari Backend on Railway
+# Root directory on Railway must be set to: complete_backend
+
+[phases.setup]
+nixPkgs = ["nodejs_18", "python3"]
+
+[phases.install]
+cmds = ["cd backend && npm ci --production"]
+
+[start]
+cmd = "cd backend && node src/app.js"
