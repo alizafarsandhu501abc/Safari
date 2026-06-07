@@ -11,4 +11,4 @@ cmds = ["npm ci"]
 cmds = ["npm run build"]
 
 [start]
-cmd = "npx vite preview --port ${PORT:-4173} --host"
+cmd = "npx vite preview --port ${PORT:-5173} --host"
