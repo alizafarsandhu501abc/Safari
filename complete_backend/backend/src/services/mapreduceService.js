@@ -18,25 +18,40 @@ function runMapReduce(filePath, workers = 4) {
     );
 
     const pythonPath = config.PYTHON_PATH;
-    const scriptPath = path.resolve(__dirname, '..', '..', 'mapreduce', 'main.py');
+    const projectRoot = path.resolve(__dirname, '..', '..');
+    const scriptPath = path.resolve(projectRoot, 'mapreduce', 'main.py');
+
+    console.log('[MapReduce] Starting analysis...');
+    console.log('[MapReduce] Python path:', pythonPath);
+    console.log('[MapReduce] Script path:', scriptPath);
+    console.log('[MapReduce] Script exists:', fs.existsSync(scriptPath));
+    console.log('[MapReduce] Input file:', filePath);
+    console.log('[MapReduce] Input exists:', fs.existsSync(filePath));
+    console.log('[MapReduce] CWD:', projectRoot);
+    console.log('[MapReduce] Workers:', workers);
 
     const args = [
-      scriptPath,
+      '-m', 'mapreduce.main',
       '--input', filePath,
       '--workers', String(workers),
       '--output-json', tempJsonPath,
     ];
 
     const child = spawn(pythonPath, args, {
-      cwd: path.resolve(__dirname, '..', '..'),
+      cwd: projectRoot,
       stdio: ['ignore', 'pipe', 'pipe'],
       env: {
         ...process.env,
-        PYTHONPATH: path.resolve(__dirname, '..', '..'),
+        PYTHONPATH: projectRoot,
       },
     });
 
     let stderr = '';
+    let stdout = '';
+
+    child.stdout.on('data', (data) => {
+      stdout += data.toString();
+    });
 
     child.stderr.on('data', (data) => {
       stderr += data.toString();
@@ -47,8 +62,12 @@ function runMapReduce(filePath, workers = 4) {
     });
 
     child.on('close', (code) => {
+      console.log('[MapReduce] Process exited with code:', code);
+      if (stdout) console.log('[MapReduce] stdout:', stdout);
+      if (stderr) console.error('[MapReduce] stderr:', stderr);
+
       if (code !== 0) {
-        return reject(new Error(`MapReduce process exited with code ${code}. Stderr: ${stderr}`));
+        return reject(new Error(`MapReduce process exited with code ${code}. Stderr: ${stderr}. Stdout: ${stdout}`));
       }
 
       try {
