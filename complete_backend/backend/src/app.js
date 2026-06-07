@@ -14,7 +14,10 @@ const auditRoutes = require('./routes/auditRoutes');
 const app = express();
 
 // ─── Core Middleware ───────────────────────────────────────────
-app.use(cors());
+app.use(cors({
+  origin: config.CORS_ORIGIN,
+  credentials: true,
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

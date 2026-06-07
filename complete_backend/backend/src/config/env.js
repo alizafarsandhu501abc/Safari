@@ -21,6 +21,7 @@ const config = {
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '24h',
   PYTHON_PATH: process.env.PYTHON_PATH || 'python',
   NODE_ENV: process.env.NODE_ENV || 'development',
+  CORS_ORIGIN: process.env.CORS_ORIGIN || '*',
 };
 
 module.exports = config;
