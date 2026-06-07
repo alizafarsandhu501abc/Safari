@@ -2,7 +2,8 @@
 # Railway Root Directory: complete_backend/backend
 
 [phases.setup]
-nixPkgs = ["nodejs_18", "python3"]
+nixPkgs = ["nodejs_18"]
+aptPkgs = ["python3"]
 
 [phases.install]
 cmds = ["npm ci --production"]
