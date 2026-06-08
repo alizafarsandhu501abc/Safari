@@ -126,7 +126,7 @@ export PYTHONPATH="." # For Unix-like systems
 
 python complete_backend/mapreduce/main.py --input <path_to_log_file> --workers <number_of_workers> --output-json <path_to_save_report.json>
 ```
-
+this is the end
 ### MapReduce Pipeline Details:
 - **Split**: Reads the source file and splits it into discrete line segments.
 - **Map**: Spawns parallel processes to extract HTTP status codes (`HTTP_<status>`), traffic hours (`Hour_<HH>`), and log anomalies/severities (`Severity_<LVL>`).
